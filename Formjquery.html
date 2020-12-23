@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <!--<script src="C:\code\jquery-validation\dist\jquery.validate.min.js"> </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
+
+    <title>Js Form </title>
+
+    <script>
+        $(function() {
+            // Initialize form validation on the registration form.
+            // It has the name attribute "registration"
+            $("form[name='register-form']").validate({
+                // Specify validation rules
+                rules: {
+                    // The key name on the left side is the name attribute
+                    // of an input field. Validation rules are defined
+                    // on the right side
+                    first_name: "required",
+                    last_name: "required",
+
+                },
+                // Specify validation error messages
+                messages: {
+                    first_name: "Please enter your firstname",
+                    last_name: "Please enter your lastname",
+
+                },
+                // Make sure the form is submitted to the destination defined
+                // in the "action" attribute of the form when valid
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+
+
+    </script>
+
+</head>
+<body >
+<div><form name=register-form" >
+    <label> First Name </label>
+    <input type="text" name ="first_name" id="first_name"  ><br><p id="first_name_error_p"></p><br>
+    <label> Last Name </label>
+    <input type="text" name="last_name" id="last_name" ><br><p id="last_name_error_p"></p><br>
+    <label> Address 1 </label>
+    <input type="text" id="address1"  ><br><p id="address1_error_p"></p><br>
+    <label> Address 2</label>
+    <input type="text" id="address2"  > <br><p id="address2_error_p"></p><br>
+
+    <label for="country">Choose a country:</label>
+
+    <select name="country" id="country"   >
+        <option value="" title='-select country first-'>-select country first-</option>
+        <option value="1">India</option>
+        <option value="2">Japan</option>
+        <option value="3">America</option>
+        <option value="4">Cannada</option>
+    </select><br><br><p id="country_combo_error"></p><br><br><br>
+
+    <label for="state">Choose a State:</label>
+    <select id='stateCombo' >
+        <option value="" title='-select state first-'>-select state first-</option>
+    </select> <br><p id="state_combo_error"></p><br><br><br>
+
+    <label for="city">Choose a city:</label>
+    <select id='cityCombo' >
+        <option value="" title='-select city first-'>-select city first-</option>
+    </select>
+    <br><p id="city_combo_error"></p><br><br><br>
+    <input type="submit" id="btn" value="Submit" >
+
+</form>
+</div>
+</body>
+</html>
