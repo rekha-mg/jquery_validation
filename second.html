@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    $(document).ready(function () {
+
+        $('#myform').validate({ // initialize the plugin
+            rules: {
+                field1: {
+                    required: true,
+                    email: true
+                },
+                field2: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            submitHandler: function (form) { // for demo
+                alert('valid form submitted'); // for demo
+                return false; // for demo
+            }
+        });
+
+    });
+</script>
+<body>
+<form id="myform">
+    <input type="text" name="field1" />
+    <input type="text" name="field2" />
+    <input type="submit" />
+</form>
+</body>
+</html>
+
