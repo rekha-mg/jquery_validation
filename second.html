@@ -2,27 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <!--<script src="C:\code\jquery-validation\dist\jquery.validate.min.js"> </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"> </script>
-
     <title>validation jquery </title>
 </head>
 <script>
 
     $(document).ready(function () {
-
         $('#myform').validate({ // initialize the plugin
             rules: {
                 first_name: {
                     required: true,
-                    email: true
+                    minlength: 2
                 },
                 second_name: {
                     required: true,
-                    minlength: 5
+                    minlength: 4
                 },
                 address_1:{
                     required: true,
@@ -34,16 +30,57 @@
             messages: {
                 address_1: "You should enter address",
                 address_2: "enter your full address to submit",
-
             }
-            /*
-            submitHandler: function (form) { // for demo
-                alert('valid form submitted'); // for demo
-                return false; // for demo
-            }*/
         });
-
     });
+
+
+
+    var india_karnataka_cities=["Mysore","Bangalore","Mandya"];
+    function load_cities() {
+        var state = $('stateCombo').val();
+        for(var i=0;i<Indian_states.length;i++){
+            if(state==Indian_states[i]){
+                alert(Indian_states[i]);
+            }
+        }
+
+
+    }
+    function load_countryState () {
+        var country = $('#country').val();
+
+        alert(country);
+        if(country == "")
+        {
+            alert("select ur country ..");
+            $('#country').focus();
+        }
+        else if(country === '1'){
+            alert("India");
+            $('#stateCombo').empty();
+            var Indian_states = ["Andrapradesh","Karnataka","uttara karnataka"];
+
+            for(var i=0;i<Indian_states.length;i++)
+            {
+                var createoption = $('<option>'+Indian_states[i]+'</option>');
+                $("#stateCombo").append(createoption);
+            }
+
+        }
+        else if(country === '2'){
+            alert("Japan");
+            $('#stateCombo').empty();
+            var Japan_states = ["Tohoku","Kanto","Chubu"];
+            for(var i=0;i<Japan_states.length;i++)
+            {
+                var createoption = $('<option>'+Japan_states[i]+'</option>');
+                $("#stateCombo").append(createoption);
+            }
+        }
+    }
+
+
 </script>
 <body>
 <form id="myform">
@@ -54,6 +91,32 @@
     <input type="text" name="address_1" ><br> <br>
     <label> Address 2</label>
     <input type="text" name="address_2" > <br> <br>
+
+    <br> <br>
+    <label for="country">Choose a country:</label>
+
+    <select name="country" id="country" onchange="load_countryState()" >
+        <option value="" title='-select country first-'>-select country first-</option>
+        <option value="1">India</option>
+        <option value="2">Japan</option>
+        <option value="3">America</option>
+        <option value="4">Cannada</option>
+    </select><br><br><p id="country_combo_error"></p><br><br><br>
+
+
+    <label for="state">Choose a State:</label>
+    <select id='stateCombo'  onchange="load_cities()">
+        <option value="" title='-select state first-'>-select state first-</option>
+
+    </select> <br><p id="state_combo_error"></p><br><br><br>
+
+    <label for="city">Choose a city:</label>
+    <select id='cityCombo'>
+        <option value="" title='-select city first-'>-select city first-</option>
+    </select>
+    <br><p id="city_combo_error"></p><br><br><br>
+
+
     <input type="submit" />
 </form>
 </body>
