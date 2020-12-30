@@ -36,8 +36,17 @@
 
 
 
+    var india_karnataka_cities=["Mysore","Bangalore","Mandya"];
+    function load_cities() {
+        var state = $('stateCombo').val();
+        for(var i=0;i<Indian_states.length;i++){
+            if(state==Indian_states[i]){
+                alert(Indian_states[i]);
+            }
+        }
 
 
+    }
     function load_countryState () {
         var country = $('#country').val();
 
@@ -54,7 +63,7 @@
 
             for(var i=0;i<Indian_states.length;i++)
             {
-                var createoption = $('<option value=' + Indian_states[i] + '>'+Indian_states[i]+'</option>');
+                var createoption = $('<option>'+Indian_states[i]+'</option>');
                 $("#stateCombo").append(createoption);
             }
 
@@ -70,23 +79,7 @@
             }
         }
     }
- function load_cities() {
 
-       var state =$('#stateCombo').val();
-     if(state == "")
-     {
-         alert("select ur state ..");
-         $('#stateCombo').focus();
-     }
-     var india_karnataka_cities=["Mysore","Bangalore","Mandya"];
-       if(state === "Karnataka"){
-           for(var i=0;i<india_karnataka_cities.length;i++)
-           {
-               var createoption = $('<option>'+india_karnataka_cities[i]+'</option>');
-               $("#cityCombo").append(createoption);
-           }
-       }
- }
 
 </script>
 <body>
@@ -108,20 +101,20 @@
         <option value="2">Japan</option>
         <option value="3">America</option>
         <option value="4">Cannada</option>
-    </select><br><br><br><br><br>
+    </select><br><br><p id="country_combo_error"></p><br><br><br>
 
 
     <label for="state">Choose a State:</label>
     <select id='stateCombo'  onchange="load_cities()">
         <option value="" title='-select state first-'>-select state first-</option>
 
-    </select> <br><br><br><br>
+    </select> <br><p id="state_combo_error"></p><br><br><br>
 
     <label for="city">Choose a city:</label>
     <select id='cityCombo'>
         <option value="" title='-select city first-'>-select city first-</option>
     </select>
-    <br><br><br><br>
+    <br><p id="city_combo_error"></p><br><br><br>
 
 
     <input type="submit" />
