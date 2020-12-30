@@ -7,3 +7,12 @@
 
 #### Second.html has code from link given below
 * http://jsfiddle.net/xs5vrrso/
+
+#### Working
+
+* Load country on page load.
+* Loads states depending on country.
+* Loads city depending on state.
+
+* I have done coding for  city on one state [Karnataka]. Rest can be done with same logic
+
